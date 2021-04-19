@@ -1,0 +1,79 @@
+﻿@model PaymentGateway_MVC.Models.TokenAndCutomerDetails
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+<div>
+    <br />
+    <h4>Authentication page for Payment</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer_Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer_Id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer_Name)
+        </dd>
+
+        @*<dt>
+                @Html.DisplayNameFor(model => model.Customer_Email)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Customer_Email)
+            </dd>*@
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Card_Number)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Card_Number)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.amount)
+        </dt>
+
+
+        <dd>
+            @using (Html.BeginForm("ConfirmPayment", "EnterPaymentAmount", new
+            {
+                _customer_id = Model.Customer_Id,
+                _token_id = Model.Token_Id,
+                _amount = Model.amount
+            }, FormMethod.Post))
+            {
+                @Html.TextBoxFor(model => model.amount)
+                @Html.ValidationMessageFor(model => model.amount)
+                <button class="btn btn-primary" type="submit">Confirm Amount and Authorize</button>
+            }
+
+        </dd>
+
+</div>
+
+
+<hr />
+
+<dt>
+    Status :
+</dt>
+
+<dd>
+    <label style="color:brown">Payment pending...</label>
+</dd>
+
+

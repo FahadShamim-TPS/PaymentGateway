@@ -1,0 +1,108 @@
+﻿@model PaymentGateway_MVC.Models.TokenAndCutomerDetails
+
+@{
+    ViewBag.Title = "ShowToken";
+}
+
+<h2 style="color:forestgreen">Get your Token</h2>
+
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer_Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer_Id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer_Name)
+        </dd>
+
+        @*<dt>
+                @Html.DisplayNameFor(model => model.Customer_Email)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Customer_Email)
+            </dd>*@
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Card_Number)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Card_Number)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Token)
+        </dt>
+
+        <dd style="color:forestgreen">
+            @Html.DisplayFor(model => model.Token)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Token_Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Token_Id)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @*@Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |*@
+    @Html.ActionLink("Proceed to Payment", "Index", "EnterPaymentAmount", new {
+    customer_id = Model.Customer_Id,
+    customerName = Model.Customer_Name,
+    cardNumber = Model.Card_Number ,
+    token_id = Model.Token_Id,
+    token = Model.Token }, null);
+</p>
+
+<hr />
+<!-- Display the countdown timer in an element -->
+<center>
+    <h3 id="demo"></h3>
+</center>
+
+
+<script>
+    // Set the date we're counting down to
+    var countDownDate = new Date().getTime() + 15 * 60 * 1000;
+
+    // Update the count down every 1 second
+    var x = setInterval(function () {
+
+        // Get today's date and time
+        var now = new Date().getTime();
+
+        // Find the distance between now and the count down date
+        var distance = countDownDate - now;
+
+        // Time calculations for hours, minutes and seconds
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // Display the result in the element with id="demo"
+        document.getElementById("demo").innerHTML = hours + ":"
+            + minutes + ":" + seconds;
+
+        // If the count down is finished, write some text
+        if (distance < 0) {
+            clearInterval(x);
+            document.getElementById("demo").innerHTML = "Your Token has EXPIRED";
+        }
+    }, 1000);
+</script>

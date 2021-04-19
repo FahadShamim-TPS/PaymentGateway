@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MonetaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="CustomerDetail">
+    <Key>
+      <PropertyRef Name="CustomerID" />
+    </Key>
+    <Property Name="CustomerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="City" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="ZipCode" Type="Int32" />
+    <Property Name="Email" Type="String" MaxLength="320" FixedLength="false" Unicode="false" />
+    <Property Name="CardNumber" Type="Int64" />
+    <Property Name="CVV_Code" Type="Int32" />
+    <Property Name="Expiration" Type="DateTime" Precision="0" />
+    <Property Name="Salt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="PaymentDetails" Relationship="Self.FK__PaymentDe__Custo__15502E78" FromRole="CustomerDetails" ToRole="PaymentDetails" />
+    <NavigationProperty Name="TokenDetails" Relationship="Self.FK__TokenDeta__Custo__1273C1CD" FromRole="CustomerDetails" ToRole="TokenDetails" />
+  </EntityType>
+  <EntityType Name="PaymentDetail">
+    <Key>
+      <PropertyRef Name="PaymentId" />
+    </Key>
+    <Property Name="PaymentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PaymentAmount" Type="Int32" />
+    <Property Name="TokenID" Type="Int32" />
+    <Property Name="CustomerID" Type="Int32" />
+    <NavigationProperty Name="CustomerDetail" Relationship="Self.FK__PaymentDe__Custo__15502E78" FromRole="PaymentDetails" ToRole="CustomerDetails" />
+    <NavigationProperty Name="TokenDetail" Relationship="Self.FK__PaymentDe__Token__164452B1" FromRole="PaymentDetails" ToRole="TokenDetails" />
+  </EntityType>
+  <EntityType Name="TokenDetail">
+    <Key>
+      <PropertyRef Name="TokenID" />
+    </Key>
+    <Property Name="TokenID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TokenCode" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Date" Type="DateTime" Precision="0" />
+    <Property Name="CustomerID" Type="Int32" />
+    <NavigationProperty Name="CustomerDetail" Relationship="Self.FK__TokenDeta__Custo__1273C1CD" FromRole="TokenDetails" ToRole="CustomerDetails" />
+    <NavigationProperty Name="PaymentDetails" Relationship="Self.FK__PaymentDe__Token__164452B1" FromRole="TokenDetails" ToRole="PaymentDetails" />
+  </EntityType>
+  <Association Name="FK__PaymentDe__Custo__15502E78">
+    <End Role="CustomerDetails" Type="Self.CustomerDetail" Multiplicity="0..1" />
+    <End Role="PaymentDetails" Type="Self.PaymentDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CustomerDetails">
+        <PropertyRef Name="CustomerID" />
+      </Principal>
+      <Dependent Role="PaymentDetails">
+        <PropertyRef Name="CustomerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TokenDeta__Custo__1273C1CD">
+    <End Role="CustomerDetails" Type="Self.CustomerDetail" Multiplicity="0..1" />
+    <End Role="TokenDetails" Type="Self.TokenDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CustomerDetails">
+        <PropertyRef Name="CustomerID" />
+      </Principal>
+      <Dependent Role="TokenDetails">
+        <PropertyRef Name="CustomerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PaymentDe__Token__164452B1">
+    <End Role="TokenDetails" Type="Self.TokenDetail" Multiplicity="0..1" />
+    <End Role="PaymentDetails" Type="Self.PaymentDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TokenDetails">
+        <PropertyRef Name="TokenID" />
+      </Principal>
+      <Dependent Role="PaymentDetails">
+        <PropertyRef Name="TokenID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MonetaEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CustomerDetails" EntityType="Self.CustomerDetail" />
+    <EntitySet Name="PaymentDetails" EntityType="Self.PaymentDetail" />
+    <EntitySet Name="TokenDetails" EntityType="Self.TokenDetail" />
+    <AssociationSet Name="FK__PaymentDe__Custo__15502E78" Association="Self.FK__PaymentDe__Custo__15502E78">
+      <End Role="CustomerDetails" EntitySet="CustomerDetails" />
+      <End Role="PaymentDetails" EntitySet="PaymentDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TokenDeta__Custo__1273C1CD" Association="Self.FK__TokenDeta__Custo__1273C1CD">
+      <End Role="CustomerDetails" EntitySet="CustomerDetails" />
+      <End Role="TokenDetails" EntitySet="TokenDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PaymentDe__Token__164452B1" Association="Self.FK__PaymentDe__Token__164452B1">
+      <End Role="TokenDetails" EntitySet="TokenDetails" />
+      <End Role="PaymentDetails" EntitySet="PaymentDetails" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

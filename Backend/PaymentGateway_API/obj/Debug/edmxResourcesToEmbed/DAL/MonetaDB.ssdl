@@ -30,7 +30,7 @@
       <PropertyRef Name="TokenID" />
     </Key>
     <Property Name="TokenID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="TokenCode" Type="varchar" MaxLength="255" />
+    <Property Name="TokenCode" Type="nvarchar(max)" />
     <Property Name="Date" Type="smalldatetime" />
     <Property Name="CustomerID" Type="int" />
   </EntityType>

@@ -62,12 +62,40 @@
 </div>
 <p>
     @*@Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |*@
+
     @Html.ActionLink("Proceed to Payment", "Index", "EnterPaymentAmount", new {
+
     customer_id = Model.Customer_Id,
+
     customerName = Model.Customer_Name,
+
     cardNumber = Model.Card_Number ,
+
     token_id = Model.Token_Id,
-    token = Model.Token }, null);
+
+    token = Model.Token }, null)
+   
+
+    @{
+        bool isTokenValid(int customer_id, string token)
+        {
+            using (var query = new MonetaEntities())
+            {
+                string _token = query.TokenDetails
+                                    .Where(t => t.CustomerID == Model.Customer_Id && t.TokenCode == Model.Token)
+                                    .Select(i => i.TokenCode).FirstOrDefault();
+
+                if (string.IsNullOrEmpty(_token))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+
+        }
+    }
+
 </p>
 
 <hr />
@@ -79,7 +107,7 @@
 
 <script>
     // Set the date we're counting down to
-    var countDownDate = new Date().getTime() + 15 * 60 * 1000;
+    var countDownDate = new Date().getTime() + 1 * 60 * 1000;
 
     // Update the count down every 1 second
     var x = setInterval(function () {

@@ -54,7 +54,7 @@ namespace PaymentGateway_API.Controllers.api
                 double TimeDifference = tokenCreatedTime.Subtract(clientSideTime).TotalMinutes * -1;
 
 
-                if (customer_id == Convert.ToInt32(customerId) && token == Convert.ToString(tokenCode) && TimeDifference < 15)
+                if (customer_id == Convert.ToInt32(customerId) && token == Convert.ToString(tokenCode) && TimeDifference < 1)
                 {
                     var response = new
                     {
@@ -65,7 +65,7 @@ namespace PaymentGateway_API.Controllers.api
                     return Json(response);
                 }
 
-                else if (customer_id == Convert.ToInt32(customerId) && token == Convert.ToString(tokenCode) && TimeDifference > 15)
+                else if (customer_id == Convert.ToInt32(customerId) && token == Convert.ToString(tokenCode) && TimeDifference > 1)
                 {
                     var response = new
                     {

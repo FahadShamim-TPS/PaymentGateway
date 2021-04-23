@@ -63,6 +63,11 @@
 <p>
     @*@Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |*@
 
+    @{ 
+        string clientToken = Model.Token;
+    }
+
+
     @Html.ActionLink("Proceed to Payment", "Index", "EnterPaymentAmount", new {
 
     customer_id = Model.Customer_Id,
@@ -73,10 +78,10 @@
 
     token_id = Model.Token_Id,
 
-    token = Model.Token }, null)
+    token = clientToken }, null)
    
 
-    @{
+    @*@{
         bool isTokenValid(int customer_id, string token)
         {
             using (var query = new MonetaEntities())
@@ -94,7 +99,7 @@
             return false;
 
         }
-    }
+    }*@
 
 </p>
 

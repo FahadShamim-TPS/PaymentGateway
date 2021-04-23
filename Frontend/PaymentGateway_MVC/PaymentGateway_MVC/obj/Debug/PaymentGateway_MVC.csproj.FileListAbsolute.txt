@@ -157,8 +157,8 @@ E:\PaymentGateway\Frontend\PaymentGateway_MVC\PaymentGateway_MVC\bin\System.Web.
 E:\PaymentGateway\Frontend\PaymentGateway_MVC\PaymentGateway_MVC\bin\Newtonsoft.Json.xml
 E:\PaymentGateway\Frontend\PaymentGateway_MVC\PaymentGateway_MVC\bin\Antlr3.Runtime.pdb
 E:\PaymentGateway\Frontend\PaymentGateway_MVC\PaymentGateway_MVC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-E:\PaymentGateway\Frontend\PaymentGateway_MVC\PaymentGateway_MVC\obj\Debug\PaymentGateway_MVC.csprojAssemblyReference.cache
 E:\PaymentGateway\Frontend\PaymentGateway_MVC\PaymentGateway_MVC\obj\Debug\PaymentGateway_MVC.csproj.CoreCompileInputs.cache
 E:\PaymentGateway\Frontend\PaymentGateway_MVC\PaymentGateway_MVC\obj\Debug\PaymentGateway_MVC.csproj.CopyComplete
 E:\PaymentGateway\Frontend\PaymentGateway_MVC\PaymentGateway_MVC\obj\Debug\PaymentGateway_MVC.dll
 E:\PaymentGateway\Frontend\PaymentGateway_MVC\PaymentGateway_MVC\obj\Debug\PaymentGateway_MVC.pdb
+E:\PaymentGateway\Frontend\PaymentGateway_MVC\PaymentGateway_MVC\obj\Debug\PaymentGateway_MVC.csprojAssemblyReference.cache

@@ -29,19 +29,33 @@ namespace PaymentGateway_MVC.Controllers
 
                 string ResponseValue = readTask.Result;
 
-                var responseData = (JObject)JsonConvert.DeserializeObject(ResponseValue);
-                string status = responseData["status"].Value<string>();
-                string message = responseData["message"].Value<string>();
-                
-
-                var result = postTask.Result;
-                if (result.IsSuccessStatusCode)
+                try
                 {
-                    ViewBag.Status = status;
-                    ViewBag.Messgae = message;
-                    //return RedirectToAction("Index", new { token = tokenValue });
-                    //return RedirectToAction("ShowToken", verify);
+                    var responseData = (JObject)JsonConvert.DeserializeObject(ResponseValue);
+                    string status = responseData["status"].Value<string>();
+                    string message = responseData["message"].Value<string>();
+
+                    var result = postTask.Result;
+                    if (result.IsSuccessStatusCode)
+                    {
+                        ViewBag.Status = status;
+                        ViewBag.Messgae = message;
+                        //return RedirectToAction("Index", new { token = tokenValue });
+                        //return RedirectToAction("ShowToken", verify);
+                    }
+                    
                 }
+                catch (Exception ex)
+                {
+
+                }
+
+                if (ResponseValue == "")
+                {
+                    ViewBag.Status = "Unauthorized";
+                    ViewBag.Messgae = "Token has been altered";
+                }
+
             }
 
             ModelState.AddModelError(string.Empty, "Server Error. Please contact administrator.");

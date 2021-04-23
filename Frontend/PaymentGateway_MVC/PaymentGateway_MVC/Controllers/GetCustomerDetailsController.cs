@@ -57,6 +57,8 @@ namespace PaymentGateway_MVC.Controllers
                 {
                     return RedirectToAction("ShowToken", "GetToken", tokenAndCustomer);
                 }
+                // Pointers
+                //else
             }
 
             ModelState.AddModelError(string.Empty, "Server Error. Please contact administrator.");

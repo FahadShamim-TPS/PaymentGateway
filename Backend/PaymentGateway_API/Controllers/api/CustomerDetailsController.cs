@@ -98,7 +98,7 @@ namespace PaymentGateway_API.Controllers.api
         //Getting token generating functions from path: Hashing/StringCipher
         private string GenerateToken(string cus_name, long card_num, int cvv, string salt)
         {
-            string Customerdetails = cus_name + "," + card_num + "," + cvv;
+            string Customerdetails = cus_name + "," + card_num + "," + cvv; //This comma seperated should be coming from webConfig file
             string encryptedstring = StringCipher.Encrypt(Customerdetails, salt);
 
             return encryptedstring;

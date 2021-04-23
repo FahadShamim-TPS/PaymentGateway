@@ -69,6 +69,21 @@ namespace PaymentGateway_API.Controllers.api
 
                     return Json(response);
                 }
+
+
+                else if (customer_id == Convert.ToInt32(customerId) && token != Convert.ToString(tokenCode))
+                {
+                    var response = new
+                    {
+                        status = "Unauthorized",
+                        message = "Token has been Altered!"
+                    };
+
+                    return Json(response);
+                }
+
+                
+
             }
             return Ok();
         }

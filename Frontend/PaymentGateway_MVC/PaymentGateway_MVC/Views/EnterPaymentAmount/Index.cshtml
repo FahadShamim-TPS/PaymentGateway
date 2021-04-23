@@ -27,13 +27,7 @@
             @Html.DisplayFor(model => model.Customer_Name)
         </dd>
 
-        @*<dt>
-                @Html.DisplayNameFor(model => model.Customer_Email)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Customer_Email)
-            </dd>*@
+       
 
         <dt>
             @Html.DisplayNameFor(model => model.Card_Number)
@@ -58,7 +52,7 @@
             {
                 @Html.TextBoxFor(model => model.amount)
                 @Html.ValidationMessageFor(model => model.amount)
-                <button class="btn btn-primary" type="submit">Confirm Amount and Authorize</button>
+                <button class="btn btn-primary" type="submit">Add Amount and Approve</button>
             }
 
         </dd>
@@ -73,7 +67,7 @@
 </dt>
 
 <dd>
-    <label style="color:brown">Payment pending...</label>
+    <label style="color:brown">Customer authentication pending...</label>
 </dd>
 
 

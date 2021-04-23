@@ -43,9 +43,13 @@ namespace PaymentGateway_API.Controllers.api
                 query.SaveChanges();
             }
 
-            string hash = GenerateToken(customer.FirstName,
-                                        customer.CardNumber, customer.CVV_Code,
-                                        saltGuid.ToString());
+            //string hash = GenerateToken(customer.FirstName,
+            //                            customer.CardNumber, customer.CVV_Code,
+            //                            saltGuid.ToString());
+
+            string hash = GenerateJWTtoken(customer.FirstName, 
+                                            customer.CardNumber, 
+                                            saltGuid.ToString());
 
             //Adding Token to Token Table in Token DB
             using (var query2 = new MonetaEntities())
@@ -140,41 +144,44 @@ namespace PaymentGateway_API.Controllers.api
 
 
         #region JWT Tokenization
-        private static JWTContainerModel GetJWTContainerModel(string name, string email)
+        private static JWTContainerModel GetJWTContainerModel(string name, long cardNumber, string salt)
         {
             return new JWTContainerModel()
             {
                 Claims = new Claim[]
                 {
                     new Claim(ClaimTypes.Name, name),
-                    new Claim(ClaimTypes.Email, email)
+                    new Claim(ClaimTypes.SerialNumber, Convert.ToString(cardNumber)),
+                    new Claim(ClaimTypes.Hash, salt)
+
                 }
             };
         }
         #endregion
 
         #region Passing Parameters of Token
-        //static void Main(string[] args)
-        //{
-        //    IAuthContainerModel model = GetJWTContainerModel("Moshe Binieli", "mmoshikoo@gmail.com");
-        //    IAuthService authService = new JWTService(model.SecretKey);
+      
+        public string GenerateJWTtoken(string name, long cardNumber, string salt)
+        {
+            IAuthContainerModel model = GetJWTContainerModel(name, cardNumber, salt);
+            IAuthService authService = new JWTService(model.SecretKey);
 
-        //    string token = authService.GenerateToken(model);
+            string token = authService.GenerateToken(model);
 
-        //    if (!authService.IsTokenValid(token))
-        //        throw new UnauthorizedAccessException();
-        //    else
-        //    {
-        //        List<Claim> claims = authService.GetTokenClaims(token).ToList();
+            if (!authService.IsTokenValid(token))
+                throw new UnauthorizedAccessException();
+            else
+            {
+                List<Claim> claims = authService.GetTokenClaims(token).ToList();
 
-        //        Console.WriteLine(claims.FirstOrDefault(e => e.Type.Equals(ClaimTypes.Name)).Value);
-        //        Console.WriteLine(claims.FirstOrDefault(e => e.Type.Equals(ClaimTypes.Email)).Value);
-        //        Console.WriteLine(token);
+                //Console.WriteLine(claims.FirstOrDefault(e => e.Type.Equals(ClaimTypes.Name)).Value);
+                //Console.WriteLine(claims.FirstOrDefault(e => e.Type.Equals(ClaimTypes.Email)).Value);
+                Console.WriteLine(token);
 
-        //    }
+            }
 
-        //    Console.ReadKey();
-        //}
+            return token;
+        }
         #endregion
 
     }

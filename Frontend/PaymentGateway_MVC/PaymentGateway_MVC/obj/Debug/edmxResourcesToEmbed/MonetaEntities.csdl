@@ -34,7 +34,7 @@
       <PropertyRef Name="TokenID" />
     </Key>
     <Property Name="TokenID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="TokenCode" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="TokenCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Date" Type="DateTime" Precision="0" />
     <Property Name="CustomerID" Type="Int32" />
     <NavigationProperty Name="CustomerDetail" Relationship="Self.FK__TokenDeta__Custo__1273C1CD" FromRole="TokenDetails" ToRole="CustomerDetails" />

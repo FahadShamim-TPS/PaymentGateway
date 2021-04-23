@@ -132,6 +132,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AuthorizationController.cs" />
+    <Compile Include="Controllers\CustomerApprovalController.cs" />
     <Compile Include="Controllers\EnterPaymentAmountController.cs" />
     <Compile Include="Controllers\GetCustomerDetailsController.cs" />
     <Compile Include="Controllers\GetTokenController.cs" />
@@ -142,6 +143,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\CustomerApprovalModel.cs" />
     <Compile Include="Models\DataForAuthorization.cs" />
     <Compile Include="Models\IdandAmount.cs" />
     <Compile Include="Models\Payment.cs" />
@@ -268,6 +270,7 @@
     <Content Include="Views\GetToken\ShowToken.cshtml" />
     <Content Include="Views\EnterPaymentAmount\Index.cshtml" />
     <Content Include="Views\Authorization\Index.cshtml" />
+    <Content Include="Views\CustomerApproval\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

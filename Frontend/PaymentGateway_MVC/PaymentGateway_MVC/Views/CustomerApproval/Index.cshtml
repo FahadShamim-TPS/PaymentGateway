@@ -1,0 +1,48 @@
+﻿@model PaymentGateway_MVC.Models.CustomerApprovalModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+<div>
+    <h4 style="color:green">An Email has been sent to your email id for authentication</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.customer_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.customer_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.payment_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.payment_id)
+        </dd>
+
+        @*<dt>
+            @Html.DisplayNameFor(model => model.email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>*@
+
+    </dl>
+</div>
+<p>
+    @using (Html.BeginForm("Index", "Authorization", new
+    {
+        customerId = Model.customer_id,
+        tokenCode = Model.token
+    }, FormMethod.Post))
+    {
+        <button class="btn btn-primary" type="submit">Authorize</button>
+    }
+</p>

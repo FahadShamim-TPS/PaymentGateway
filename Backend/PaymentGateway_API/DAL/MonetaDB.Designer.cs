@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\fahad.shamim\source\repos\PaymentGateway_API\PaymentGateway_API\DAL\MonetaDB.edmx'. 
+﻿// T4 code generation is enabled for model 'E:\Tasks Project\PaymentGateway\Backend\PaymentGateway_API\DAL\MonetaDB.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

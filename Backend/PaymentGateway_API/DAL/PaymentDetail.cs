@@ -18,6 +18,7 @@ namespace PaymentGateway_API.DAL
         public Nullable<int> PaymentAmount { get; set; }
         public Nullable<int> TokenID { get; set; }
         public Nullable<int> CustomerID { get; set; }
+        public string status { get; set; }
     
         public virtual CustomerDetail CustomerDetail { get; set; }
         public virtual TokenDetail TokenDetail { get; set; }

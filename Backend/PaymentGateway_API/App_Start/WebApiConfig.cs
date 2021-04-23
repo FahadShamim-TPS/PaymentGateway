@@ -9,15 +9,19 @@ namespace PaymentGateway_API
     {
         public static void Register(HttpConfiguration config)
         {
-            // Web API configuration and services
-
-            // Web API routes
             config.MapHttpAttributeRoutes();
 
+            // api/Country/WithStates
             config.Routes.MapHttpRoute(
-                name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional }
+              name: "ControllerAndActionOnly",
+              routeTemplate: "api/{controller}/{action}",
+              defaults: new { },
+              constraints: new { action = @"^[a-zA-Z]+([\s][a-zA-Z]+)*$" });
+
+            config.Routes.MapHttpRoute(
+              name: "DefaultActionApi",
+              routeTemplate: "api/{controller}/{action}/{id}",
+              defaults: new { id = RouteParameter.Optional }
             );
         }
     }

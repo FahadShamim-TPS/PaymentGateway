@@ -5,9 +5,9 @@ using System.Web;
 
 namespace PaymentGateway_API.Models
 {
-    public class DataForAuthorization
+    public class PostmanDataForAuthorization
     {
-        public DataForAuthorization()
+        public PostmanDataForAuthorization()
         {
             customerId = 0;
             tokenCode = string.Empty;

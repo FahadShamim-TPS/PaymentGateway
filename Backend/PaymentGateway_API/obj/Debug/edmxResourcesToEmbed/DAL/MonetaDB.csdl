@@ -28,6 +28,7 @@
     <Property Name="CustomerID" Type="Int32" />
     <NavigationProperty Name="CustomerDetail" Relationship="Self.FK__PaymentDe__Custo__15502E78" FromRole="PaymentDetails" ToRole="CustomerDetails" />
     <NavigationProperty Name="TokenDetail" Relationship="Self.FK__PaymentDe__Token__164452B1" FromRole="PaymentDetails" ToRole="TokenDetails" />
+    <Property Name="status" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="TokenDetail">
     <Key>

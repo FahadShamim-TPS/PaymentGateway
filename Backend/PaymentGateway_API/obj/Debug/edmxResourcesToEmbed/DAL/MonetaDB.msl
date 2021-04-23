@@ -21,6 +21,7 @@
     <EntitySetMapping Name="PaymentDetails">
       <EntityTypeMapping TypeName="MonetaModel.PaymentDetail">
         <MappingFragment StoreEntitySet="PaymentDetails">
+          <ScalarProperty Name="status" ColumnName="status" />
           <ScalarProperty Name="PaymentId" ColumnName="PaymentId" />
           <ScalarProperty Name="PaymentAmount" ColumnName="PaymentAmount" />
           <ScalarProperty Name="TokenID" ColumnName="TokenID" />

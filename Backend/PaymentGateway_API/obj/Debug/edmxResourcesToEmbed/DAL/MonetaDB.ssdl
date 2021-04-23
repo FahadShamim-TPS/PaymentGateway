@@ -24,6 +24,7 @@
     <Property Name="PaymentAmount" Type="int" />
     <Property Name="TokenID" Type="int" />
     <Property Name="CustomerID" Type="int" />
+    <Property Name="status" Type="varchar" MaxLength="100" />
   </EntityType>
   <EntityType Name="TokenDetails">
     <Key>

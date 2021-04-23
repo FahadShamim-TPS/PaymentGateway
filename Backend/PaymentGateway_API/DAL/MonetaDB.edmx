@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="MonetaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="MonetaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="CustomerDetails">
           <Key>
             <PropertyRef Name="CustomerID" />
@@ -29,6 +29,7 @@
           <Property Name="PaymentAmount" Type="int" />
           <Property Name="TokenID" Type="int" />
           <Property Name="CustomerID" Type="int" />
+          <Property Name="status" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="TokenDetails">
           <Key>
@@ -92,8 +93,7 @@
             <End Role="TokenDetails" EntitySet="TokenDetails" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="MonetaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -125,6 +125,7 @@
           <Property Name="CustomerID" Type="Int32" />
           <NavigationProperty Name="CustomerDetail" Relationship="Self.FK__PaymentDe__Custo__15502E78" FromRole="PaymentDetails" ToRole="CustomerDetails" />
           <NavigationProperty Name="TokenDetail" Relationship="Self.FK__PaymentDe__Token__164452B1" FromRole="PaymentDetails" ToRole="TokenDetails" />
+          <Property Name="status" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="TokenDetail">
           <Key>
@@ -216,6 +217,7 @@
           <EntitySetMapping Name="PaymentDetails">
             <EntityTypeMapping TypeName="MonetaModel.PaymentDetail">
               <MappingFragment StoreEntitySet="PaymentDetails">
+                <ScalarProperty Name="status" ColumnName="status" />
                 <ScalarProperty Name="PaymentId" ColumnName="PaymentId" />
                 <ScalarProperty Name="PaymentAmount" ColumnName="PaymentAmount" />
                 <ScalarProperty Name="TokenID" ColumnName="TokenID" />

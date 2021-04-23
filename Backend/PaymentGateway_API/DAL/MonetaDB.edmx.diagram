@@ -7,7 +7,7 @@
       <Diagram DiagramId="1897c6d2ef68431e9dd0b80838d4d25d" Name="Diagram1">
         <EntityTypeShape EntityType="MonetaModel.CustomerDetail" Width="1.5" PointX="0.75" PointY="1.875" IsExpanded="true" />
         <EntityTypeShape EntityType="MonetaModel.PaymentDetail" Width="1.5" PointX="5.25" PointY="3.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="MonetaModel.TokenDetail" Width="1.5" PointX="3" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MonetaModel.TokenDetail" Width="1.5" PointX="6.125" PointY="0.625" IsExpanded="true" />
         <AssociationConnector Association="MonetaModel.FK__PaymentDe__Custo__15502E78" ManuallyRouted="false" />
         <AssociationConnector Association="MonetaModel.FK__TokenDeta__Custo__1273C1CD" ManuallyRouted="false" />
         <AssociationConnector Association="MonetaModel.FK__PaymentDe__Token__164452B1" ManuallyRouted="false" />
